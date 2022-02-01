@@ -8,21 +8,13 @@ const root = process.cwd();
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const files = fs.readdirSync(path.join(root, 'src/pages/posts'));
-  const postMeta: string[] = [];
+  const posts = [];
 
   files.map(async (file) => {
-    const { meta } = await import(`./posts/${file}`);
-    postMeta.push(meta);
-  });
-
-  const posts = files.map((file) => {
     const slug = file.replace('.mdx', '');
-    // const slug = fs.readFileSync(path.join(root, 'src/pages/posts'));
+    const { meta } = await import(`./posts/${file}`);
 
-    return {
-      slug,
-      postMeta,
-    };
+    posts.push({ slug: slug, meta: meta });
   });
 
   return {
@@ -33,13 +25,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 const Posts = ({ posts }) => {
-  console.log(posts);
   return (
     <div>
       <h2>Hello from blog</h2>
-      {posts.map((post) => {
-        <p>Hello</p>;
-      })}
+      {posts.map((post) => (
+        <li>{post.meta.title}</li>
+      ))}
     </div>
   );
 };
