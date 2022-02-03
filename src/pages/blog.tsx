@@ -8,12 +8,19 @@ const root = process.cwd();
 
 interface Post {
   slug: string;
-  meta: {
+  meta?: {
     title: string;
     description: string;
     date: number;
     author: string;
   };
+}
+
+interface Meta {
+  title: string;
+  description: string;
+  date: number;
+  author: string;
 }
 
 interface PostProps extends Post {
@@ -22,18 +29,24 @@ interface PostProps extends Post {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const files = fs.readdirSync(path.join(root, 'src/pages/posts'));
-  const posts: Post[] = [];
+  // const posts: Post[] = [];
 
-  files.map(async (file) => {
+  const meta = async (file: Meta) => {
+    const data = await import(`./posts/${file}`);
+
+    return { ...data };
+  };
+
+  const posts = files.map((file) => {
     const slug = file.replace('.mdx', '');
-    const { meta } = await import(`./posts/${file}`);
 
-    posts.push({ slug: slug, meta: meta });
+    return { slug };
   });
 
   return {
     props: {
       posts,
+      meta,
     },
   };
 };
@@ -44,13 +57,13 @@ const Posts = ({ posts }: PostProps) => {
     <div>
       <h2>Hello from blog</h2>
       <ul>
-        {posts.map((post) => (
+        {/* {posts.map((post) => (
           <li key={post.slug}>
             <Link href={`/posts/${post.slug}`}>
               <a>{post.meta.title}</a>
             </Link>
           </li>
-        ))}
+        ))} */}
       </ul>
     </div>
   );
