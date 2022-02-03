@@ -31,28 +31,25 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const files = fs.readdirSync(path.join(root, 'src/pages/posts'));
   // const posts: Post[] = [];
 
-  const meta = async (file: Meta) => {
-    const data = await import(`./posts/${file}`);
+  const posts = files.map(async (file) => {
+    const { meta } = await import(`./posts/${file}`);
 
-    return { ...data };
-  };
-
-  const posts = files.map((file) => {
-    const slug = file.replace('.mdx', '');
-
-    return { slug };
+    console.log(meta);
+    return {
+      meta,
+    };
   });
+
+  // console.log(posts);
 
   return {
     props: {
       posts,
-      meta,
     },
   };
 };
 
 const Posts = ({ posts }: PostProps) => {
-  console.log(posts);
   return (
     <div>
       <h2>Hello from blog</h2>
@@ -60,7 +57,7 @@ const Posts = ({ posts }: PostProps) => {
         {/* {posts.map((post) => (
           <li key={post.slug}>
             <Link href={`/posts/${post.slug}`}>
-              <a>{post.meta.title}</a>
+              <a>{post.slug}</a>
             </Link>
           </li>
         ))} */}
