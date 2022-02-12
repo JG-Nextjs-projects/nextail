@@ -3,15 +3,11 @@ import React from 'react';
 import Footer from './Footer';
 import Header from './Header';
 
-interface LayoutProps {
-  children: React.ReactNode;
-}
-
-const Layout = ({ children }: LayoutProps) => {
+const Layout: React.FC = ({ children }) => {
   return (
     <>
       <Header />
-      <main>{children}</main>
+      <main className="container mx-auto">{children}</main>
       <Footer />
     </>
   );

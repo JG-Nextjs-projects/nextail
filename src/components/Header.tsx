@@ -5,9 +5,9 @@ import SocialMedia from './SocialMedia';
 
 const Header = () => {
   return (
-    <header>
-      <div>
-        <span>Logo</span>
+    <header className="bg-blue-500 px-4">
+      <div className="container mx-auto py-4 flex">
+        <span className="mr-4">Logo</span>
         <Nav />
         <SocialMedia />
       </div>
