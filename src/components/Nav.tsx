@@ -1,7 +1,14 @@
 import React from 'react';
 
 const Nav = () => {
-  return <div></div>;
+  return (
+    <nav>
+      <ul>
+        <li>Blog</li>
+        <li>Projects</li>
+      </ul>
+    </nav>
+  );
 };
 
 export default Nav;

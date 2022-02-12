@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Article = () => {
-  return <div>Article</div>;
+  return <article>Article</article>;
 };
 
 export default Article;
