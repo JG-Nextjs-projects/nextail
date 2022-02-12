@@ -35,7 +35,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 const Posts = ({ posts }: PostProps) => {
-  console.log(posts);
   return (
     <div>
       <h2>Hello from blog</h2>
