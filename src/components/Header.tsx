@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 import Nav from './Nav';
@@ -7,7 +8,11 @@ const Header = () => {
   return (
     <header className="bg-blue-500 px-4">
       <div className="container mx-auto py-4 flex">
-        <span className="mr-4">Logo</span>
+        <span className="mr-6">
+          <Link href={'/'}>
+            <a>Logo</a>
+          </Link>
+        </span>
         <Nav />
         <SocialMedia />
       </div>
