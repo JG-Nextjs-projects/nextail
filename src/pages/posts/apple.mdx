@@ -1,3 +1,5 @@
+import Post from '../../components/Post';
+
 export const meta = {
   id: 2,
   title: 'Hello Dog',
@@ -7,6 +9,8 @@ export const meta = {
   slug: 'apple',
   excerpt: '',
 };
+
+export default ({ children }) => <Post title={meta.title}>{children}</Post>;
 
 Irure consectetur minim laboris ullamco do et sit adipisicing. Cupidatat cillum sint aliquip minim
 incididunt sit duis velit. Ea ut nisi pariatur deserunt. Elit officia exercitation occaecat nisi
