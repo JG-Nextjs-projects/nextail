@@ -6,7 +6,7 @@ import SocialMedia from './SocialMedia';
 
 const Header = () => {
   return (
-    <header className="bg-blue-500 px-4">
+    <header className="bg-blue-500 mb-8 px-4">
       <div className="container mx-auto py-4 flex">
         <span className="mr-6">
           <Link href={'/'}>
