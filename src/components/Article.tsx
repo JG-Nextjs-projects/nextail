@@ -8,8 +8,8 @@ interface ArticleProps {
 const Article: React.FC<ArticleProps> = ({ children, title }) => {
   return (
     <article>
-      <header>
-        <h1>{title}</h1>
+      <header className="mb-4">
+        <h1 className="text-3xl">{title}</h1>
       </header>
       {children}
     </article>
