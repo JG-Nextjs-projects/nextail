@@ -37,10 +37,10 @@ export const getStaticProps: GetStaticProps = async (context) => {
 const Posts = ({ posts }: PostProps) => {
   return (
     <div>
-      <h2>Hello from blog</h2>
+      <h1 className="text-3xl font-extrabold leading-9 mb-8">Hello from blog</h1>
       <ul>
         {posts.map((post) => (
-          <li key={post.slug}>
+          <li className="py-1" key={post.slug}>
             <Link href={`/posts/${post.slug}`}>
               <a>{post.title}</a>
             </Link>
